@@ -37,33 +37,39 @@ result
 
 ```yaml
 #<><> Labeler <><><><><><><>
+#
 # Enable "labeler" for your PR that would add labels to PRs based on the paths that are modified in the PR.
 labelPRBasedOnFilePath:
-  # Add 'label1' to any changes within 'accepted' folder or any subfolders
-  label1:
+  # Add 'Implemented' to any changes within 'accepted' folder or any sub-folders
+  Implemented:
     - accepted/**/*
 
-  # Add 'label2' to any file changes within 'yips' folder
-  label2:
+  # Add 'community-strategy' to any file changes within 'yips' folder
+  community-strategy:
     - yips/*
 
-  # Complex: Add 'governance/core' label to any change within the 'core' package
-  governance/core:
-    - src/core/*
-    - src/core/**/*  
+  # Complex: Add 'contracts/core' label to any change within the 'core' package
+  contracts/core:
+    - contracts/core/*
+    - contracts/core/**/*  
 
-  # Add 'Proposed' label to any change to *.proposed.md files within the source dir
+  # ADD 'Proposed' label to any change to *.proposed.md files within the source dir
   Proposed:
     - yips/**/*.proposed.md
 
-# Various Flags to control behaviour of the "Labeler"
+# "Labeler" Flags
 labelerFlags:
-  # If this flag is changed to 'false', labels would only be added when the PR is first created and not when existing 
-  # PR is updated.
+  # If this flag is changed to 'false', labels would only be added when the PR is first created and not when existing is updated
+
   # The default is 'true' which means the labels would be added when PR is updated even if they were removed by the user   
   labelOnPRUpdates: true
+```
 
+### GitHub Community Onboarding
+
+```yaml
 #<><> Greetings <><><><><><><>
+#
 # Comment to be posted to welcome users when they open their first PR
 firstPRWelcomeComment: >
   Thanks for opening this pull request! Please check out our contributing guidelines.
@@ -80,40 +86,53 @@ firstIssueWelcomeComment: >
 ### Issue Linker - Discourse to and from GitHub
 
 ```yaml
-# <><> IssueLink Adder 
+# <><> IssueLink Adder
+#
 # Insert Issue (Discourse/Github etc) link in PR description based on the Issue ID in PR title.
 insertIssueLinkInPrDescription:
+
    # specify the placeholder for the issue link that should be present in the description
   descriptionIssuePlaceholderRegexp: "^Issue link: (.*)$"
   matchers:
-    # you can have several matches - for different types of issues
+
     # only the first matching entry is replaced
     discourseIssueMatch:
+
       # specify the regexp of issue id that you can find in the title of the PR
       # the match groups can be used to build the issue id (${1}, ${2}, etc.).
-      titleIssueIdRegexp: \[(AIRFLOW-[0-9]{4})\]
+      titleIssueIdRegexp: \[(a-zA-Z-[0-9]{4})\]
+
       # the issue link to be added. ${1}, ${2} ... are replaced with the match groups from the
       # title match (remember to use quotes)
-      descriptionIssueLink: "[${1}](https://issues.apache.org/discourse/browse/${1}/)"
+      descriptionIssueLink: "[${1}](https://issues.discourse.org/discourse/browse/${1}/)"
     docOnlyIssueMatch:
-      titleIssueIdRegexp: \[(AIRFLOW-X{4})\]
+      titleIssueIdRegexp: \[(a-zA-Z-X{4})\]
       descriptionIssueLink: "`Document only change, no discourse topic`"
 ```
 
 ### Title Validator
 
+Validate based upon `regex` 
+
+> visit [regexr.com](https://regexr.com/) to test that your regex phrase works
+
 ```yaml
 # <><> Title Validator  <><><><><>
 # Verifies if commit/PR titles match the regexp specified
+
 verifyTitles:
   # Regular expression that should be matched by titles of commits or PR
-  titleRegexp: ^\[AIRFLOW-[0-9]{4}\].*$|^\[AIRFLOW-XXXX\].*$
+  titleRegexp: ^\[a-zA-Z-[0-9]{4}\].*$|^\[a-zA-Z-XXXX\].*$
+
   # If set to true, it will always check the PR title (as opposed to the individual commits).
   alwaysUsePrTitle: true
+
   # If set to true, it will only check the commit in case there is a single commit.
   # In case of multiple commits it will check PR title.
   # This reflects the standard behavior of Github that for `Squash & Merge` GitHub
+
   # uses the PR title rather than commit messages for the squashed commit 
+
   # For single-commit PRs it takes the squashed commit message from the commit as expected.
   #
   # If set to false it will check all commit messages. This is useful when you do not squash commits at merge.
@@ -129,6 +148,8 @@ verifyTitles:
 
 ### Branch / Pull-Request
 
+> Note: GitHub has some specific logic as to what gets given priority in the `commit` messages depending on if its a PR / Squash / etc
+
 ```yaml
 ## PR/Branch Up-To-Date Checker 
 # Check if the branch is up to date with master when certain files are modified
@@ -137,10 +158,8 @@ checkUpToDate:
   targetBranch: master
   files:
   # File paths that you want to check for
-  # In this example, it checks if the branch is up to date when alembic migrations are modified in the PR.
-  # It helps avoid multiple heads in alembic migrations in a collaborative development project.
-    - airflow/migrations/*
-    - airflow/migrations/**/*
+    - a-zA-Z/migrations/*
+    - a-zA-Z/migrations/**/*
     - contracts/alembic.ini
 ```
 
