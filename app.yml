@@ -1,43 +1,54 @@
-# Web3ProBot APP MANIFEST FILE
+# SPDX-License-Identifier: ISC
+# Web3Govern ProBot 
 # 
-# NOTE: changing this file will not update your GitHub App settings.
-# You must visit github.com/settings/apps/your-app-name to edit them.
-#
-# Read more about configuring your GitHub App:
-# https://probot.github.io/docs/development/#configuring-a-github-app
-#
-# Read more about GitHub App Manifests:
-# https://developer.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/
+# version 0.1.0
+#          _                    _                 _              _          
+#        / /\      _          /\ \              / /\          /\ \         
+#       / / /    / /\        /  \ \            / /  \        /  \ \        
+#      / / /    / / /       / /\ \ \          / / /\ \      / /\ \ \       
+#     / / /_   / / /       / / /\ \_\        / / /\ \ \    / / /\ \ \      
+#    / /_//_/\/ / /       / /_/_ \/_/       / / /\ \_\ \   \/_//_\ \ \     
+#   / _______/\/ /       / /____/\         / / /\ \ \___\    __\___ \ \    
+#  / /  \____\  /       / /\____\/        / / /  \ \ \__/   / /\   \ \ \   
+# /_/ /\ \ /\ \/       / / /______       / / /____\_\ \    / /_/____\ \ \  
+# \_\//_/ /_/ /       / / /_______\     / / /__________\  /__________\ \ \ 
+#    \_\/\_\/        \/__________/     \/_____________/  \_____________\/ 
+                                                                         
+# 
+# GitHub Configuration: https://probot.github.io/docs/development/#configuring-a-github-app
+# GitHub App Manifests: https://developer.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/
+# 
 
+########     START GITHUB MANIFEST       #########
 # The list of events the GitHub App subscribes to.
 # Uncomment the event names below to enable them.
 default_events:
-- check_run
-- check_suite
-# - commit_comment
-# - create
-# - delete
-# - deployment
-# - deployment_status
-# - fork
-# - gollum
-# - issue_comment
-# - issues
-- label
-# - milestone
-# - member
-# - membership
-# - org_block
-# - organization
-# - page_build
-# - project
-# - project_card
-# - project_column
-# - public
-- pull_request
-# - pull_request_review
-# - pull_request_review_comment
-- push
+  # - check_run
+  # - check_suite
+  # - commit_comment
+  # - create
+  # - delete
+  # - deployment
+  # - deployment_status
+  # - fork
+  # - gollum
+  # - issue_comment
+  - issues
+  - label
+  # - milestone
+  # - member
+  # - membership
+  # - org_block
+  # - organization
+  # - page_build
+  # - project
+  # - project_card
+  # - project_column
+  # - public
+  - pull_request
+  - pull_request_review
+  - pull_request_review_comment
+# - push
 # - release
 # - repository
 # - repository_import
@@ -53,7 +64,7 @@ default_events:
 default_permissions:
   # Repository creation, deletion, settings, teams, and collaborators.
   # https://developer.github.com/v3/apps/permissions/#permission-on-administration
-  administration: read
+  # administration: read
 
   # Checks on code.
   # https://developer.github.com/v3/apps/permissions/#permission-on-checks
@@ -69,7 +80,7 @@ default_permissions:
 
   # Issues and related comments, assignees, labels, and milestones.
   # https://developer.github.com/v3/apps/permissions/#permission-on-issues
-  issues: read
+  issues: write
 
   # Search repositories, list collaborators, and access repository metadata.
   # https://developer.github.com/v3/apps/permissions/#metadata-permissions
@@ -81,7 +92,7 @@ default_permissions:
 
   # Pull requests and related comments, assignees, labels, milestones, and merges.
   # https://developer.github.com/v3/apps/permissions/#permission-on-pull-requests
-  pull_requests: read
+  pull_requests: write
 
   # Manage the post-receive hooks for a repository.
   # https://developer.github.com/v3/apps/permissions/#permission-on-repository-hooks
@@ -97,7 +108,7 @@ default_permissions:
 
   # Commit statuses.
   # https://developer.github.com/v3/apps/permissions/#permission-on-statuses
-  # statuses: read
+  statuses: write
 
   # Organization members and teams.
   # https://developer.github.com/v3/apps/permissions/#permission-on-members
@@ -125,13 +136,13 @@ default_permissions:
 
 
 # The name of the GitHub App. Defaults to the name specified in package.json
-name: Web3ProBot
+name: web3govern
 
 # The homepage of your GitHub App.
-url: https://solidityci.com
+url: https://github.com/sambacha/web3govern
 
 # A description of the GitHub App.
-description: Web3 GitHub Assistance Bot
+description: A GitHub Bot for helping Web3 Governance Projects manage their community proposals, etc.
 
 # Set to true when your GitHub App is available to the public or false when it is only accessible to the owner of the app.
 # Default: true

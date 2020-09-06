@@ -21,8 +21,9 @@
 		"test:watch": "jest --watch --notify --notifyMode=change --coverage"
 	},
 	"dependencies": {
-		"probot": "^10.1.0",
-		"ignore": "^5.1.4"
+		"bnc-sdk": "^2.1.5",
+		"ignore": "^5.1.4",
+		"probot": "^10.1.0"
 	},
 	"devDependencies": {
 		"eslint": "^7.8.1",

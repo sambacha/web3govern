@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+// SPDX-License-Identifier: ISC
 const labeler = require('./lib/labeler')
 const greetings = require('./lib/greetings')
 const issuelink = require('./lib/issuelink')
@@ -17,7 +19,8 @@ module.exports = app => {
     'pull_request.opened',
     'pull_request.reopened',
     'pull_request.edited',
-    'pull_request.synchronize'], async context => {
+    'pull_request.synchronize'
+], async context => {
     const config = await utils.getConfig(context)
     await labeler.addLabelsOnPr(context, config)
   })
@@ -45,7 +48,8 @@ module.exports = app => {
     'pull_request.opened',
     'pull_request.reopened',
     'pull_request.edited',
-    'pull_request.synchronize'], async context => {
+    'pull_request.synchronize'
+], async context => {
     const config = await utils.getConfig(context)
     await issuelink.insertIssueLinkInPrDescription(context, config)
   })
@@ -55,7 +59,8 @@ module.exports = app => {
     'pull_request.opened',
     'pull_request.reopened',
     'pull_request.edited',
-    'pull_request.synchronize'], async context => {
+    'pull_request.synchronize'
+], async context => {
     const config = await utils.getConfig(context)
     await titleValidator.verifyTitles(context, config)
   })
@@ -65,7 +70,8 @@ module.exports = app => {
     'pull_request.opened',
     'pull_request.reopened',
     'pull_request.edited',
-    'pull_request.synchronize'], async context => {
+    'pull_request.synchronize'
+], async context => {
     const config = await utils.getConfig(context)
     await upToDateChecker.checkUpToDate(context, config)
   })
