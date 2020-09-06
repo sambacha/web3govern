@@ -1,23 +1,23 @@
 # SPDX-License-Identifier: ISC
-# Web3Govern ProBot 
-# 
+# Web3Govern ProBot
+#
 # version 0.1.0
-#          _                    _                 _              _          
-#        / /\      _          /\ \              / /\          /\ \         
-#       / / /    / /\        /  \ \            / /  \        /  \ \        
-#      / / /    / / /       / /\ \ \          / / /\ \      / /\ \ \       
-#     / / /_   / / /       / / /\ \_\        / / /\ \ \    / / /\ \ \      
-#    / /_//_/\/ / /       / /_/_ \/_/       / / /\ \_\ \   \/_//_\ \ \     
-#   / _______/\/ /       / /____/\         / / /\ \ \___\    __\___ \ \    
-#  / /  \____\  /       / /\____\/        / / /  \ \ \__/   / /\   \ \ \   
-# /_/ /\ \ /\ \/       / / /______       / / /____\_\ \    / /_/____\ \ \  
-# \_\//_/ /_/ /       / / /_______\     / / /__________\  /__________\ \ \ 
-#    \_\/\_\/        \/__________/     \/_____________/  \_____________\/ 
-                                                                         
-# 
+#          _                    _                 _              _
+#        / /\      _          /\ \              / /\          /\ \
+#       / / /    / /\        /  \ \            / /  \        /  \ \
+#      / / /    / / /       / /\ \ \          / / /\ \      / /\ \ \
+#     / / /_   / / /       / / /\ \_\        / / /\ \ \    / / /\ \ \
+#    / /_//_/\/ / /       / /_/_ \/_/       / / /\ \_\ \   \/_//_\ \ \
+#   / _______/\/ /       / /____/\         / / /\ \ \___\    __\___ \ \
+#  / /  \____\  /       / /\____\/        / / /  \ \ \__/   / /\   \ \ \
+# /_/ /\ \ /\ \/       / / /______       / / /____\_\ \    / /_/____\ \ \
+# \_\//_/ /_/ /       / / /_______\     / / /__________\  /__________\ \ \
+#    \_\/\_\/        \/__________/     \/_____________/  \_____________\/
+
+#
 # GitHub Configuration: https://probot.github.io/docs/development/#configuring-a-github-app
 # GitHub App Manifests: https://developer.github.com/apps/building-github-apps/creating-github-apps-from-a-manifest/
-# 
+#
 
 ########     START GITHUB MANIFEST       #########
 # The list of events the GitHub App subscribes to.
@@ -110,6 +110,7 @@ default_permissions:
   # https://developer.github.com/v3/apps/permissions/#permission-on-statuses
   statuses: write
 
+
   # Organization members and teams.
   # https://developer.github.com/v3/apps/permissions/#permission-on-members
   # members: read
@@ -134,7 +135,6 @@ default_permissions:
   # https://developer.github.com/v3/apps/permissions/
   # organization_administration: read
 
-
 # The name of the GitHub App. Defaults to the name specified in package.json
 name: web3govern
 
@@ -143,7 +143,6 @@ url: https://github.com/sambacha/web3govern
 
 # A description of the GitHub App.
 description: A GitHub Bot for helping Web3 Governance Projects manage their community proposals, etc.
-
 # Set to true when your GitHub App is available to the public or false when it is only accessible to the owner of the app.
 # Default: true
 # public: false
