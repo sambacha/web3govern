@@ -4,3 +4,15 @@ npm-debug.log
 !mock-cert.pem
 .env
 coverage
+
+*.zip
+*.tgz
+*.tar.gz
+*.tar
+*.tar.lz
+
+keys
+
+key
+keystore
+*.jwt

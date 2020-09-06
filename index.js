@@ -1,37 +1,72 @@
-// Checks API example
-// See: https://developer.github.com/v3/checks/ to learn more
+const labeler = require('./lib/labeler')
+const greetings = require('./lib/greetings')
+const issuelink = require('./lib/issuelink')
+const titleValidator = require('./lib/title_validator')
+const upToDateChecker = require('./lib/up_to_date_checker')
+const utils = require('./lib/utils')
 
-/**
- * This is the main entrypoint to your Probot app
- * @param {import('probot').Application} app
- */
 module.exports = app => {
-  app.on(['check_suite.requested', 'check_run.rerequested'], check)
+  app.log('Yay, the app was loaded!')
 
-  async function check (context) {
-    const startTime = new Date()
+  app.on('*', async context => {
+    context.log({ event: context.event, action: context.payload.action })
+  })
 
-    // Do stuff
-    const { head_branch: headBranch, head_sha: headSha } = context.payload.check_suite
-    // Probot API note: context.repo() => {username: 'hiimbex', repo: 'testing-things'}
-    return context.github.checks.create(context.repo({
-      name: 'My app!',
-      head_branch: headBranch,
-      head_sha: headSha,
-      status: 'completed',
-      started_at: startTime,
-      conclusion: 'success',
-      completed_at: new Date(),
-      output: {
-        title: 'Probot check!',
-        summary: 'The check has passed!'
-      }
-    }))
-  }
+  // "Labeler" - Add Labels on PRs
+  app.on([
+    'pull_request.opened',
+    'pull_request.reopened',
+    'pull_request.edited',
+    'pull_request.synchronize'], async context => {
+    const config = await utils.getConfig(context)
+    await labeler.addLabelsOnPr(context, config)
+  })
 
-  // For more information on building apps:
-  // https://probot.github.io/docs/
+  // "Greetings" - Welcome Authors on opening their first PR
+  app.on('pull_request.opened', async context => {
+    const config = await utils.getConfig(context)
+    await greetings.commentOnfirstPR(context, config)
+  })
 
-  // To get your app running against GitHub, see:
-  // https://probot.github.io/docs/development/
+  // "Greetings" - Congratulate Authors on getting their first PR merged
+  app.on('pull_request.closed', async context => {
+    const config = await utils.getConfig(context)
+    await greetings.commentOnfirstPRMerge(context, config)
+  })
+
+  // "Greetings" - Welcome Authors on opening their first Issue
+  app.on('issues.opened', async context => {
+    const config = await utils.getConfig(context)
+    await greetings.commentOnfirstIssue(context, config)
+  })
+
+  // "IssueLink" - Update issue links in PRs
+  app.on([
+    'pull_request.opened',
+    'pull_request.reopened',
+    'pull_request.edited',
+    'pull_request.synchronize'], async context => {
+    const config = await utils.getConfig(context)
+    await issuelink.insertIssueLinkInPrDescription(context, config)
+  })
+
+  // "Commit Validator" - validate commit messages for regular expression
+  app.on([
+    'pull_request.opened',
+    'pull_request.reopened',
+    'pull_request.edited',
+    'pull_request.synchronize'], async context => {
+    const config = await utils.getConfig(context)
+    await titleValidator.verifyTitles(context, config)
+  })
+
+  // "Up to date checker" - Check if PR is up to date with master
+  app.on([
+    'pull_request.opened',
+    'pull_request.reopened',
+    'pull_request.edited',
+    'pull_request.synchronize'], async context => {
+    const config = await utils.getConfig(context)
+    await upToDateChecker.checkUpToDate(context, config)
+  })
 }

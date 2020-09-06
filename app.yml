@@ -1,6 +1,5 @@
-# This is a GitHub App Manifest. These settings will be used by default when
-# initially configuring your GitHub App.
-#
+# Web3ProBot APP MANIFEST FILE
+# 
 # NOTE: changing this file will not update your GitHub App settings.
 # You must visit github.com/settings/apps/your-app-name to edit them.
 #
@@ -24,7 +23,7 @@ default_events:
 # - gollum
 # - issue_comment
 # - issues
-# - label
+- label
 # - milestone
 # - member
 # - membership
@@ -35,10 +34,10 @@ default_events:
 # - project_card
 # - project_column
 # - public
-# - pull_request
+- pull_request
 # - pull_request_review
 # - pull_request_review_comment
-# - push
+- push
 # - release
 # - repository
 # - repository_import
@@ -54,7 +53,7 @@ default_events:
 default_permissions:
   # Repository creation, deletion, settings, teams, and collaborators.
   # https://developer.github.com/v3/apps/permissions/#permission-on-administration
-  # administration: read
+  administration: read
 
   # Checks on code.
   # https://developer.github.com/v3/apps/permissions/#permission-on-checks
@@ -70,7 +69,7 @@ default_permissions:
 
   # Issues and related comments, assignees, labels, and milestones.
   # https://developer.github.com/v3/apps/permissions/#permission-on-issues
-  # issues: read
+  issues: read
 
   # Search repositories, list collaborators, and access repository metadata.
   # https://developer.github.com/v3/apps/permissions/#metadata-permissions
@@ -82,7 +81,7 @@ default_permissions:
 
   # Pull requests and related comments, assignees, labels, milestones, and merges.
   # https://developer.github.com/v3/apps/permissions/#permission-on-pull-requests
-  # pull_requests: read
+  pull_requests: read
 
   # Manage the post-receive hooks for a repository.
   # https://developer.github.com/v3/apps/permissions/#permission-on-repository-hooks
@@ -126,13 +125,13 @@ default_permissions:
 
 
 # The name of the GitHub App. Defaults to the name specified in package.json
-# name: My Probot App
+name: Web3ProBot
 
 # The homepage of your GitHub App.
-# url: https://example.com/
+url: https://solidityci.com
 
 # A description of the GitHub App.
-# description: A description of my awesome app
+description: Web3 GitHub Assistance Bot
 
 # Set to true when your GitHub App is available to the public or false when it is only accessible to the owner of the app.
 # Default: true
